@@ -3,6 +3,8 @@ import "./edit.css";
 import Input from "../input/Input";
 import Label from "../label/Label";
 import Textarea from "../textarea/Textarea";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser } from "../../redux/apiRequests";
 
 const avatarsUrl = [
   "https://preview.redd.it/rrz3hmsxcll71.png?width=640&crop=smart&auto=webp&s=87cc5ed38d8f088ef9fffef7a4c5756b64309d6a",
@@ -16,18 +18,38 @@ const avatarsUrl = [
   "https://preview.redd.it/26s9eejm8vz51.png?auto=webp&s=e38d32ee0ffa0666fade2abd62ed59037c119990",
 ];
 
-const EditPage = () => {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [about, setAbout] = useState("");
-  const [theme, setTheme] = useState("");
-  const [url, setUrl] = useState("");
+const EditPage = ({ setEdit }) => {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const [name, setName] = useState(user.name);
+  const [age, setAge] = useState(user.age);
+  const [about, setAbout] = useState(user.about);
+  const [theme, setTheme] = useState(user.themeColor);
+  const [avaUrl, setAvaUrl] = useState(user.avaUrl);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setEdit(false);
+
+    const updateUserValue = {
+      name: name,
+      age: age,
+      about: about,
+      avaUrl: avaUrl,
+      themeColor: theme,
+    };
+
+    updateUser(updateUserValue, dispatch);
+  };
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <section className="edit-container">
-          <button className="close">SAVE</button>
+          <button type="submit" className="close">
+            SAVE
+          </button>
           <div className="edit-profile">Edit profile</div>
           <div className="input-container">
             <Label valueName="name">Your name</Label>
@@ -67,7 +89,12 @@ const EditPage = () => {
                     src={url}
                     alt=""
                     className="input-image"
-                    onClick={(e) => setUrl(e.target)}
+                    onClick={(e) => setAvaUrl(e.target.src)}
+                    style={
+                      url === avaUrl
+                        ? { border: "5px solid #2980f3" }
+                        : { border: "0px" }
+                    }
                   />
                 </div>
               );
