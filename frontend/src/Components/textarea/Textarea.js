@@ -7,14 +7,17 @@ const Textarea = ({
   placeholder = "",
   value = "",
   setValue,
+  className = "input-about",
+  cols = "30",
+  rows = "10",
 }) => {
   return (
     <textarea
       name={name}
       id={id}
-      cols="30"
-      rows="10"
-      className="input-about"
+      cols={cols}
+      rows={rows}
+      className={className}
       placeholder={placeholder}
       value={value}
       onChange={(e) => setValue(e.target.value)}
@@ -29,6 +32,8 @@ Textarea.propTypes = {
   id: PropTypes.string,
   value: PropTypes.string,
   placeholder: PropTypes.string,
+  cols: PropTypes.string,
+  rows: PropTypes.string,
   setValue: PropTypes.any,
 };
 

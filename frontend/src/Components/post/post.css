@@ -1,0 +1,186 @@
+.makepost-container {
+  height: 70vh;
+  background-color: #292929;
+  padding: 0.75rem 1.25rem 0 1.25rem;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+}
+.makepost-navigation {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.25rem;
+}
+
+.makepost-save {
+  /* cursor: pointer;
+  border: 2px solid white;
+  border-radius: 16px;
+  padding: 0.45rem; */
+  padding: 0.45rem;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+.makepost-save:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+.makepost-save:active {
+  color: #000;
+}
+
+.makepost-save:active:after {
+  background: transparent;
+}
+
+.makepost-save:hover:before {
+  opacity: 1;
+}
+
+.makepost-save:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+/* .makepost-save:hover {
+  background: #fff;
+  color: #292929;
+} */
+.makepost-desc {
+  background-color: #535353;
+  color: white;
+  border: none;
+  padding: 0.25rem 0.5rem 4rem 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.makepost-title {
+  height: 50px;
+  background-color: #535353;
+  color: white;
+  border: none;
+  padding: 0.25rem 0.5rem 4rem 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.makepost-tags {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+}
+.makepost-tags > button {
+  color: white;
+  border: none;
+  padding: 0.4rem;
+  border-radius: 14px;
+  cursor: pointer;
+}
+.makepost-tags-NSFW {
+  background-color: rgb(209, 66, 47);
+}
+.makepost-tags-Mood {
+  background-color: rgb(1, 111, 201);
+}
+.makepost-tags-Quotes {
+  background-color: rgb(183, 47, 224);
+}
+.makepost-tags-Shitpost {
+  background-color: rgb(197, 186, 23);
+}
+.makepost-tags-None {
+  background-color: grey;
+}
+.makepost-tags-selected {
+  background-color: teal;
+  box-shadow: 0px 0px 10px 7px rgb(0, 204, 160);
+}
+
+.post-container {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+}
+.posts {
+  background-color: rgb(49, 49, 49);
+  margin-bottom: 1rem;
+  padding: 1rem 1rem 1rem 2rem;
+}
+.posts-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.posts-tags {
+  color: white;
+  border: none;
+  margin: 0.75rem 0 0.75rem 0;
+  font-size: 0.75rem;
+  border-radius: 14px;
+  width: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+.posts-tags-NSFW {
+  background-color: rgb(209, 66, 47);
+}
+.posts-tags-Mood {
+  background-color: rgb(1, 111, 201);
+}
+.posts-tags-Quotes {
+  background-color: rgb(183, 47, 224);
+}
+.posts-tags-Shitpost {
+  background-color: rgb(197, 186, 23);
+}
+.posts-tags-None {
+  background-color: grey;
+}
